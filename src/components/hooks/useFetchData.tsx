@@ -5,10 +5,14 @@ const useFetchData = (url: string) => {
 
   useEffect(() => {
     const getData = async () => {
-      let response = await fetch(url);
-      let datafromAPI = await response.json();
-      setData(datafromAPI);
-      console.log(datafromAPI);
+      try {
+        let response = await fetch(url);
+        let datafromAPI = await response.json();
+        setData(datafromAPI);
+        console.log(datafromAPI);
+      } catch (error) {
+        console.log(error);
+      }
     };
 
     getData();

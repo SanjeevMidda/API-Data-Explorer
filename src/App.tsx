@@ -7,7 +7,7 @@ import useFetchData from "./components/hooks/useFetchData";
 import { useState } from "react";
 
 function App() {
-  useFetchData("https://jsonplaceholder.typicode.com/posts");
+  useFetchData("https://jsonplaceholder.typ");
 
   type status = "loading" | "error" | "success";
 
