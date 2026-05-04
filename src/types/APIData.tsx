@@ -1,6 +1,6 @@
 export type APIData = {
-  body: "string";
+  body: string;
   id: number;
-  title: "string";
+  title: string;
   userId: number;
 };
