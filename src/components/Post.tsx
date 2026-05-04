@@ -4,7 +4,7 @@ import { APIData } from "../types/APIData";
 const Post = ({ body, id, title, userId }: APIData) => {
   const [dropDown, setDropDown] = useState(false);
   return (
-    <div className="postContainer" onClick={() => setDropDown(!dropDown)}>
+    <div className="postContainer" onClick={() => setDropDown((prev) => !prev)}>
       <h3>
         <span>TITLE:</span> {title}
       </h3>
