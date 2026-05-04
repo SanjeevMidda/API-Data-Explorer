@@ -1,17 +1,10 @@
 import { useEffect, useState } from "react";
-
-type status = "loading" | "error" | "success";
-
-type apidData = {
-  body: "string";
-  id: number;
-  title: "string";
-  userId: number;
-};
+import { APIData } from "../types/APIData";
+import { Status } from "../types/status";
 
 const useFetchData = (url: string) => {
-  const [data, setData] = useState<apidData[] | null>(null);
-  const [appStatus, setAppStatus] = useState<status>("loading");
+  const [data, setData] = useState<APIData[] | null>(null);
+  const [appStatus, setAppStatus] = useState<Status>("loading");
 
   useEffect(() => {
     const getData = async () => {

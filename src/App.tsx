@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Search from "./components/Search";
 import Refetch from "./components/Refetch";
 
-import useFetchData from "./components/hooks/useFetchData";
+import useFetchData from "./hooks/useFetchData";
 import { useState } from "react";
 
 function App() {
