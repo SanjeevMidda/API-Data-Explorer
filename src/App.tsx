@@ -20,9 +20,10 @@ function App() {
       <div className="mainPostContainer">
         {appStatus === "loading" && <p>Loading data...</p>}
         {appStatus === "error" && <p>Error loading data. Please try again</p>}
-        {appStatus === "success" && <p>Data loaded!</p>}
+        {appStatus === "success" &&
+          data &&
+          data.map((item) => <p>{item.title}</p>)}
       </div>
-
       <div className="searchAndRefreshContainer">
         <Search />
         <Refetch />

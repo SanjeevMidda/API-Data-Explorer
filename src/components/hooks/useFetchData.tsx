@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 
 type status = "loading" | "error" | "success";
 
+type apidData = {
+  body: "string";
+  id: number;
+  title: "string";
+  userId: number;
+};
+
 const useFetchData = (url: string) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<apidData[] | null>(null);
   const [appStatus, setAppStatus] = useState<status>("loading");
 
   useEffect(() => {
