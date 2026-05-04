@@ -8,13 +8,15 @@ type PostProps = {
 };
 
 const Post = ({ post, onSelectPost, selectedPost }: PostProps) => {
+  const isSelected = selectedPost?.id === post.id;
+
   return (
     <div className="postContainer" onClick={() => onSelectPost(post)}>
       <h3>
         <span>TITLE:</span> {post.title}
       </h3>
 
-      {selectedPost?.id === post.id && (
+      {isSelected && (
         <>
           <p>
             <span>POST:</span> {post.body}

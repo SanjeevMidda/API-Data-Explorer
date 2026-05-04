@@ -19,6 +19,10 @@ function App() {
       item.title.toLowerCase().includes(userInput.toLowerCase())
     ) ?? [];
 
+  const handleSelectPost = (post: APIData) => {
+    setSelectedPost((prev) => (prev?.id === post.id ? null : post));
+  };
+
   return (
     <div className="App">
       <Header title="API Data Explorer" />
@@ -33,7 +37,7 @@ function App() {
               post={item}
               key={item.id}
               selectedPost={selectedPost}
-              onSelectPost={setSelectedPost}
+              onSelectPost={handleSelectPost}
             />
           ))}
 
