@@ -1,3 +1,3 @@
 export type RefetchProp = {
-  onRefetch: () => Promise<void>;
+  RefetchProps: () => Promise<void>;
 };
