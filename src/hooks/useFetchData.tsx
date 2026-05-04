@@ -6,21 +6,21 @@ const useFetchData = (url: string) => {
   const [data, setData] = useState<APIData[] | null>(null);
   const [appStatus, setAppStatus] = useState<Status>("loading");
 
-  useEffect(() => {
-    const getData = async () => {
-      setAppStatus("loading");
-      try {
-        let response = await fetch(url);
-        let datafromAPI = await response.json();
-        setData(datafromAPI);
-        setAppStatus("success");
-        console.log(datafromAPI);
-      } catch (error) {
-        console.log(error);
-        setAppStatus("error");
-      }
-    };
+  const getData = async () => {
+    setAppStatus("loading");
+    try {
+      let response = await fetch(url);
+      let datafromAPI = await response.json();
+      setData(datafromAPI);
+      setAppStatus("success");
+      console.log(datafromAPI);
+    } catch (error) {
+      console.log(error);
+      setAppStatus("error");
+    }
+  };
 
+  useEffect(() => {
     getData();
   }, []);
   return { data, appStatus };
