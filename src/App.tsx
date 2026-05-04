@@ -20,8 +20,6 @@ function App() {
       item.title.toLowerCase().includes(userInput.toLowerCase())
     ) ?? [];
 
-  console.log(filteredData);
-
   return (
     <div className="App">
       <Header title="API Data Explorer" />
