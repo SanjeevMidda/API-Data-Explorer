@@ -5,6 +5,8 @@ import Refetch from "./components/Refetch";
 
 import useFetchData from "./hooks/useFetchData";
 
+import Post from "./components/Post";
+
 function App() {
   const { data, appStatus } = useFetchData(
     "https://jsonplaceholder.typicode.com/posts"
@@ -21,7 +23,15 @@ function App() {
         {appStatus === "error" && <p>Error loading data. Please try again</p>}
         {appStatus === "success" &&
           data &&
-          data.map((item) => <p>{item.title}</p>)}
+          data.map((item) => (
+            <Post
+              title={item.title}
+              body={item.body}
+              id={item.id}
+              userId={item.userId}
+              key={item.id}
+            />
+          ))}
       </div>
       <div className="searchAndRefreshContainer">
         <Search />
