@@ -1,7 +1,7 @@
 import "./index.css";
 import Header from "./components/Header";
 import Search from "./components/Search";
-import Refresh from "./components/Refresh";
+import Refetch from "./components/Refetch";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
 
       <div className="searchAndRefreshContainer">
         <Search />
-        <Refresh />
+        <Refetch />
       </div>
     </div>
   );
