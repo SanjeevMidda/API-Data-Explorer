@@ -3,18 +3,18 @@ import { APIData } from "../types/APIData";
 
 type PostProps = {
   post: APIData;
+  selectedPost: APIData | null;
+  onSelectPost: (post: APIData) => void;
 };
 
-const Post = ({ post }: PostProps) => {
-  // const Post = ({ body, id, title, userId }: APIData) => {
-  const [dropDown, setDropDown] = useState(false);
+const Post = ({ post, onSelectPost, selectedPost }: PostProps) => {
   return (
-    <div className="postContainer" onClick={() => setDropDown((prev) => !prev)}>
+    <div className="postContainer" onClick={() => onSelectPost(post)}>
       <h3>
         <span>TITLE:</span> {post.title}
       </h3>
 
-      {dropDown && (
+      {selectedPost?.id === post.id && (
         <>
           <p>
             <span>POST:</span> {post.body}

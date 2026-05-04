@@ -28,7 +28,14 @@ function App() {
         {appStatus === "error" && <p>Error loading data. Please try again</p>}
         {appStatus === "success" &&
           data &&
-          filteredData.map((item) => <Post post={item} key={item.id} />)}
+          filteredData.map((item) => (
+            <Post
+              post={item}
+              key={item.id}
+              selectedPost={selectedPost}
+              onSelectPost={setSelectedPost}
+            />
+          ))}
 
         {appStatus === "success" && filteredData.length === 0 && (
           <p>No posts found.</p>
