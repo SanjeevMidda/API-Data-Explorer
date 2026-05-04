@@ -8,11 +8,11 @@ import useFetchData from "./hooks/useFetchData";
 import Post from "./components/Post";
 
 function App() {
-  const { data, appStatus } = useFetchData(
+  const { data, appStatus, refetch } = useFetchData(
     "https://jsonplaceholder.typicode.com/posts"
   );
 
-  console.log(appStatus);
+  console.log(refetch);
 
   return (
     <div className="App">
@@ -35,7 +35,7 @@ function App() {
       </div>
       <div className="searchAndRefreshContainer">
         <Search />
-        <Refetch />
+        <Refetch onRefetch={refetch} />
       </div>
     </div>
   );

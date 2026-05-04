@@ -1,5 +1,11 @@
-const Refetch = () => {
-  return <button id="refetch">R</button>;
+import { refetchProp } from "../types/reFetch";
+
+const Refetch = ({ onRefetch }: refetchProp) => {
+  return (
+    <button id="refetch" onClick={onRefetch}>
+      R
+    </button>
+  );
 };
 
 export default Refetch;
