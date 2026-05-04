@@ -1,24 +1,29 @@
 import { useState } from "react";
 import { APIData } from "../types/APIData";
 
-const Post = ({ body, id, title, userId }: APIData) => {
+type PostProps = {
+  post: APIData;
+};
+
+const Post = ({ post }: PostProps) => {
+  // const Post = ({ body, id, title, userId }: APIData) => {
   const [dropDown, setDropDown] = useState(false);
   return (
     <div className="postContainer" onClick={() => setDropDown((prev) => !prev)}>
       <h3>
-        <span>TITLE:</span> {title}
+        <span>TITLE:</span> {post.title}
       </h3>
 
       {dropDown && (
         <>
           <p>
-            <span>POST:</span> {body}
+            <span>POST:</span> {post.body}
           </p>
           <p>
-            <span>USERID:</span> {userId}
+            <span>USERID:</span> {post.userId}
           </p>
           <p>
-            <span>ID:</span> {id}
+            <span>ID:</span> {post.id}
           </p>
         </>
       )}

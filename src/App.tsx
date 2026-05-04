@@ -5,11 +5,13 @@ import Post from "./components/Post";
 
 import useFetchData from "./hooks/useFetchData";
 import { useState } from "react";
+import { APIData } from "./types/APIData";
 
 function App() {
   const url = "https://jsonplaceholder.typicode.com/posts";
   const { data, appStatus, refetch } = useFetchData(url);
 
+  const [selectedPost, setSelectedPost] = useState<APIData | null>(null);
   const [userInput, setUserInput] = useState("");
 
   const filteredData =
@@ -26,15 +28,7 @@ function App() {
         {appStatus === "error" && <p>Error loading data. Please try again</p>}
         {appStatus === "success" &&
           data &&
-          filteredData.map((item) => (
-            <Post
-              title={item.title}
-              body={item.body}
-              id={item.id}
-              userId={item.userId}
-              key={item.id}
-            />
-          ))}
+          filteredData.map((item) => <Post post={item} key={item.id} />)}
 
         {appStatus === "success" && filteredData.length === 0 && (
           <p>No posts found.</p>
