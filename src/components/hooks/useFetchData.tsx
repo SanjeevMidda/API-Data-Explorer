@@ -1,11 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useFetchData = (url: string) => {
+  const [data, setData] = useState(null);
+
   useEffect(() => {
     const getData = async () => {
       let response = await fetch(url);
-      let data = await response.json();
-      console.log(data);
+      let datafromAPI = await response.json();
+      setData(datafromAPI);
+      console.log(datafromAPI);
     };
 
     getData();
