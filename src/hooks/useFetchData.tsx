@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { APIData } from "../types/APIData";
 import { Status } from "../types/status";
 
@@ -6,23 +6,25 @@ const useFetchData = (url: string) => {
   const [data, setData] = useState<APIData[] | null>(null);
   const [appStatus, setAppStatus] = useState<Status>("loading");
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     setAppStatus("loading");
     try {
       let response = await fetch(url);
-      let datafromAPI = await response.json();
-      setData(datafromAPI);
+
+      if (!response.ok) throw new Error("Request failed");
+
+      let dataFromAPI = await response.json();
+      setData(dataFromAPI);
       setAppStatus("success");
-      console.log(datafromAPI);
     } catch (error) {
       console.log(error);
       setAppStatus("error");
     }
-  };
+  }, [url]);
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [url]);
   return { data, appStatus, setData, refetch: getData };
 };
 
