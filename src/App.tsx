@@ -11,8 +11,6 @@ function App() {
     "https://jsonplaceholder.typicode.com/posts"
   );
 
-  // disable input on load
-
   const [userInput, setUserInput] = useState("");
 
   const filteredData =
