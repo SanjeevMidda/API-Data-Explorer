@@ -7,9 +7,8 @@ import useFetchData from "./hooks/useFetchData";
 import { useState } from "react";
 
 function App() {
-  const { data, appStatus, refetch } = useFetchData(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
+  const url = "https://jsonplaceholder.typicode.com/posts";
+  const { data, appStatus, refetch } = useFetchData(url);
 
   const [userInput, setUserInput] = useState("");
 
