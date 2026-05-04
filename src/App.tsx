@@ -16,7 +16,9 @@ function App() {
   const [userInput, setUserInput] = useState("");
 
   const filteredData =
-    data?.filter((item) => item.title.includes(userInput)) ?? [];
+    data?.filter((item) =>
+      item.title.toLowerCase().includes(userInput.toLowerCase())
+    ) ?? [];
 
   console.log(filteredData);
 
@@ -39,7 +41,7 @@ function App() {
             />
           ))}
 
-        {appStatus && "success" && filteredData.length === 0 && (
+        {appStatus === "success" && "success" && filteredData.length === 0 && (
           <p>No posts found.</p>
         )}
       </div>
@@ -48,6 +50,7 @@ function App() {
           type="text"
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
+          disabled={appStatus === "loading"}
         />
         <Refetch refetch={refetch} />
       </div>
