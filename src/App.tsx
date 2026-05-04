@@ -1,6 +1,7 @@
 import "./index.css";
 import Header from "./components/Header";
 import Search from "./components/Search";
+import Refresh from "./components/Refresh";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
 
       <div className="searchAndRefreshContainer">
         <Search />
+        <Refresh />
       </div>
     </div>
   );
