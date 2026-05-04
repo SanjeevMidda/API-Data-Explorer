@@ -4,7 +4,6 @@ import Search from "./components/Search";
 import Refetch from "./components/Refetch";
 
 import useFetchData from "./hooks/useFetchData";
-import { useState } from "react";
 
 function App() {
   const { data, appStatus } = useFetchData(
