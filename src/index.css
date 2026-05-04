@@ -17,3 +17,17 @@
 h1 {
   width: 100%;
 }
+
+.searchAndRefreshContainer {
+  /* border: 1px solid black; */
+  display: flex;
+  gap: 60px;
+}
+
+input {
+  width: 360px;
+  height: 50px;
+  border-radius: 50px;
+  border: 1px solid rgb(180, 180, 180);
+  padding: 20px;
+}
