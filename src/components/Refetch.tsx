@@ -1,8 +1,8 @@
-import { RefetchProp } from "../types/reFetch";
+import { RefetchProps } from "../types/RefetchProps";
 
-const Refetch = ({ onRefetch }: RefetchProp) => {
+const Refetch = ({ refetch }: RefetchProps) => {
   return (
-    <button id="refetch" onClick={onRefetch}>
+    <button id="refetch" onClick={refetch}>
       R
     </button>
   );

@@ -7,7 +7,7 @@ import useFetchData from "./hooks/useFetchData";
 import { useState } from "react";
 
 function App() {
-  const { data, setData, appStatus, refetch } = useFetchData(
+  const { data, appStatus, refetch } = useFetchData(
     "https://jsonplaceholder.typicode.com/posts"
   );
 
@@ -49,7 +49,7 @@ function App() {
           value={userInput}
           onChange={(e) => setUserInput(e.target.value)}
         />
-        <Refetch onRefetch={refetch} />
+        <Refetch refetch={refetch} />
       </div>
     </div>
   );

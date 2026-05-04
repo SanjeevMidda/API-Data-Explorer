@@ -17,15 +17,14 @@ const useFetchData = (url: string) => {
       setData(dataFromAPI);
       setAppStatus("success");
     } catch (error) {
-      console.log(error);
       setAppStatus("error");
     }
   }, [url]);
 
   useEffect(() => {
     getData();
-  }, [url]);
-  return { data, appStatus, setData, refetch: getData };
+  }, []);
+  return { data, appStatus, refetch: getData };
 };
 
 export default useFetchData;
