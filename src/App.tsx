@@ -1,4 +1,4 @@
-import "./index.css";
+import "./styles/index.css";
 import Header from "./components/Header";
 import Refetch from "./components/Refetch";
 import Post from "./components/Post";
@@ -39,7 +39,7 @@ function App() {
             />
           ))}
 
-        {appStatus === "success" && "success" && filteredData.length === 0 && (
+        {appStatus === "success" && filteredData.length === 0 && (
           <p>No posts found.</p>
         )}
       </div>

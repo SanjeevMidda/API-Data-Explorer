@@ -5,28 +5,42 @@ import { Status } from "../types/status";
 const useFetchData = (url: string) => {
   const [data, setData] = useState<APIData[] | null>(null);
   const [appStatus, setAppStatus] = useState<Status>("loading");
+  const [error, setError] = useState<string | null>(null);
 
-  const getData = useCallback(async () => {
-    const controller = new AbortController();
+  const fetchData = useCallback(
+    async (signal?: AbortSignal) => {
+      setError(null);
+      setAppStatus("loading");
+      try {
+        let response = await fetch(url, { signal });
 
-    setAppStatus("loading");
-    try {
-      let response = await fetch(url, { signal: controller.signal });
+        if (!response.ok) throw new Error("Request failed");
 
-      if (!response.ok) throw new Error("Request failed");
+        let dataFromAPI = await response.json();
+        setData(dataFromAPI);
+        setAppStatus("success");
+      } catch (error: any) {
+        if (error.name === "AbortError") return;
+        setAppStatus("error");
 
-      let dataFromAPI = await response.json();
-      setData(dataFromAPI);
-      setAppStatus("success");
-    } catch (error) {
-      setAppStatus("error");
-    }
-  }, [url]);
+        if (error instanceof Error) {
+          setError(error.message);
+        } else {
+          setError("Unknown error occurred");
+        }
+      }
+    },
+    [url]
+  );
 
   useEffect(() => {
-    getData();
+    const controller = new AbortController();
+
+    fetchData(controller.signal);
+
+    return () => controller.abort();
   }, []);
-  return { data, appStatus, refetch: getData };
+  return { data, appStatus, refetch: fetchData };
 };
 
 export default useFetchData;
