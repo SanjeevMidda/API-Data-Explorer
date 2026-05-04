@@ -1,5 +1,5 @@
 const Refetch = () => {
-  return <button>R</button>;
+  return <button id="refetch">R</button>;
 };
 
 export default Refetch;
