@@ -46,6 +46,26 @@ input {
   font-weight: 500;
 }
 
+.mainPostContainer {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: scroll;
+  height: 70dvh;
+}
+
+.postContainer {
+  width: 120px;
+  height: 200px;
+  border: 1px solid black;
+  padding: 20px;
+  overflow: scroll;
+}
+
 span {
   font-weight: 600;
+}
+
+h3,
+p {
+  font-size: 12px;
 }
