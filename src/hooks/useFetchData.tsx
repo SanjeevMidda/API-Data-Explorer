@@ -23,7 +23,7 @@ const useFetchData = (url: string) => {
   useEffect(() => {
     getData();
   }, []);
-  return { data, appStatus, refetch: getData };
+  return { data, appStatus, setData, refetch: getData };
 };
 
 export default useFetchData;

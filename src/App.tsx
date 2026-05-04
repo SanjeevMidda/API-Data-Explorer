@@ -1,18 +1,24 @@
 import "./index.css";
 import Header from "./components/Header";
-import Search from "./components/Search";
 import Refetch from "./components/Refetch";
-
-import useFetchData from "./hooks/useFetchData";
-
 import Post from "./components/Post";
 
+import useFetchData from "./hooks/useFetchData";
+import { useState } from "react";
+
 function App() {
-  const { data, appStatus, refetch } = useFetchData(
+  const { data, setData, appStatus, refetch } = useFetchData(
     "https://jsonplaceholder.typicode.com/posts"
   );
 
-  console.log(refetch);
+  // disable input on load
+
+  const [userInput, setUserInput] = useState("");
+
+  const filteredData =
+    data?.filter((item) => item.title.includes(userInput)) ?? [];
+
+  console.log(filteredData);
 
   return (
     <div className="App">
@@ -23,7 +29,7 @@ function App() {
         {appStatus === "error" && <p>Error loading data. Please try again</p>}
         {appStatus === "success" &&
           data &&
-          data.map((item) => (
+          filteredData.map((item) => (
             <Post
               title={item.title}
               body={item.body}
@@ -32,9 +38,17 @@ function App() {
               key={item.id}
             />
           ))}
+
+        {appStatus && "success" && filteredData.length === 0 && (
+          <p>No posts found.</p>
+        )}
       </div>
       <div className="searchAndRefreshContainer">
-        <Search />
+        <input
+          type="text"
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+        />
         <Refetch onRefetch={refetch} />
       </div>
     </div>
