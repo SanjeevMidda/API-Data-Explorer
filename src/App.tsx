@@ -17,7 +17,11 @@ function App() {
     <div className="App">
       <Header title="API Data Explorer" />
 
-      <div className="mainPostContainer"></div>
+      <div className="mainPostContainer">
+        {appStatus === "loading" && <p>loading data...</p>}
+        {appStatus === "error" && <p>error loading data. Please try again</p>}
+        {appStatus === "success" && <p>data loaded!</p>}
+      </div>
 
       <div className="searchAndRefreshContainer">
         <Search />
