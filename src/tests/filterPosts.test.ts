@@ -28,4 +28,12 @@ describe("filter posts", () => {
     const expected = [{ id: 2, title: "John", body: "...", userId: 2 }];
     expect(result).toEqual(expected);
   });
+
+  test("should match posts regardless of letter case in the search term", () => {
+    const posts = mockPosts;
+    const search = "tOm";
+    const result = filterPosts(posts, search);
+    const expected = [{ id: 1, title: "Tom", body: "...", userId: 1 }];
+    expect(result).toEqual(expected);
+  });
 });
