@@ -21,4 +21,16 @@ describe("App UI behaviour", () => {
 
     expect(screen.getByText(/loading data/i)).toBeInTheDocument();
   });
+
+  test("shows no results when search has no results", () => {
+    (useFetchData as jest.Mock).mockReturnValue({
+      data: [],
+      appStatus: "success",
+      refetch: jest.fn(),
+    });
+
+    render(<App />);
+
+    expect(screen.getByText(/No posts found./i)).toBeInTheDocument();
+  });
 });
