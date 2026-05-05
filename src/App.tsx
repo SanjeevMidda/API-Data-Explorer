@@ -2,6 +2,7 @@ import "./styles/index.css";
 import Header from "./components/Header";
 import Refetch from "./components/Refetch";
 import Post from "./components/Post";
+import { filterPosts } from "./utils/filterPosts";
 
 import useFetchData from "./hooks/useFetchData";
 import { useState } from "react";
@@ -14,10 +15,7 @@ function App() {
   const [selectedPost, setSelectedPost] = useState<APIData | null>(null);
   const [userInput, setUserInput] = useState("");
 
-  const filteredData =
-    data?.filter((item) =>
-      item.title.toLowerCase().includes(userInput.toLowerCase())
-    ) ?? [];
+  const filteredData = filterPosts(data ?? [], userInput);
 
   const handleSelectPost = (post: APIData) => {
     setSelectedPost((prev) => (prev?.id === post.id ? null : post));
