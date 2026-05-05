@@ -36,4 +36,12 @@ describe("filter posts", () => {
     const expected = [{ id: 1, title: "Tom", body: "...", userId: 1 }];
     expect(result).toEqual(expected);
   });
+
+  test("", () => {
+    const posts = mockPosts;
+    const search = "noMatch";
+    const result = filterPosts(posts, search);
+    const expected: [] = [];
+    expect(result).toEqual(expected);
+  });
 });
