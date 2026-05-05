@@ -1,13 +1,8 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import App from "../App";
 import useFetchData from "../hooks/useFetchData";
 
 jest.mock("../hooks/useFetchData");
-
-const mockData = [
-  { id: 1, title: "Tom", body: "...", userId: 1 },
-  { id: 2, title: "John", body: "...", userId: 2 },
-];
 
 describe("App UI behaviour", () => {
   test("shows loading initially", () => {
